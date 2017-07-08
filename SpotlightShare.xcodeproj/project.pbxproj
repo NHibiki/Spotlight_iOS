@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2A81A7A9CC0C3B43685F18F /* Pods_SpotlightShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A237206D1EA1D5C7B1833AD /* Pods_SpotlightShare.framework */; };
+		DBAD5B701F109B4C008A5B50 /* globalFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAD5B6F1F109B4C008A5B50 /* globalFunc.swift */; };
+		DBAD5B721F109D45008A5B50 /* globalDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAD5B711F109D45008A5B50 /* globalDef.swift */; };
+		DBAD5B741F109DD5008A5B50 /* mainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAD5B731F109DD5008A5B50 /* mainViewController.swift */; };
+		DBAD5B761F109EBA008A5B50 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAD5B751F109EBA008A5B50 /* AppNavigationController.swift */; };
 		DBF34DE41F10976B005C23D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF34DE31F10976B005C23D9 /* AppDelegate.swift */; };
 		DBF34DE61F10976B005C23D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF34DE51F10976B005C23D9 /* ViewController.swift */; };
 		DBF34DE91F10976B005C23D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF34DE71F10976B005C23D9 /* Main.storyboard */; };
@@ -34,6 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34E33211F5B8FED64279E607 /* Pods-SpotlightShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotlightShare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotlightShare/Pods-SpotlightShare.debug.xcconfig"; sourceTree = "<group>"; };
+		9A237206D1EA1D5C7B1833AD /* Pods_SpotlightShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotlightShare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBAD5B6F1F109B4C008A5B50 /* globalFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = globalFunc.swift; sourceTree = "<group>"; };
+		DBAD5B711F109D45008A5B50 /* globalDef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = globalDef.swift; sourceTree = "<group>"; };
+		DBAD5B731F109DD5008A5B50 /* mainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainViewController.swift; sourceTree = "<group>"; };
+		DBAD5B751F109EBA008A5B50 /* AppNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
+		DBAD5B771F10B4CD008A5B50 /* SpotlightShare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpotlightShare-Bridging-Header.h"; sourceTree = "<group>"; };
 		DBF34DE01F10976A005C23D9 /* SpotlightShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotlightShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBF34DE31F10976B005C23D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBF34DE51F10976B005C23D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +59,7 @@
 		DBF34DFF1F10976B005C23D9 /* SpotlightShareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotlightShareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBF34E031F10976B005C23D9 /* SpotlightShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightShareUITests.swift; sourceTree = "<group>"; };
 		DBF34E051F10976B005C23D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF35928EC34C332FDF06F3C4 /* Pods-SpotlightShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotlightShare.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotlightShare/Pods-SpotlightShare.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2A81A7A9CC0C3B43685F18F /* Pods_SpotlightShare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +88,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C11232368BFBFA3559CD921E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9A237206D1EA1D5C7B1833AD /* Pods_SpotlightShare.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA7F310C871A90473E3C069D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				34E33211F5B8FED64279E607 /* Pods-SpotlightShare.debug.xcconfig */,
+				DF35928EC34C332FDF06F3C4 /* Pods-SpotlightShare.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DBF34DD71F10976A005C23D9 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +112,9 @@
 				DBF34DF71F10976B005C23D9 /* SpotlightShareTests */,
 				DBF34E021F10976B005C23D9 /* SpotlightShareUITests */,
 				DBF34DE11F10976A005C23D9 /* Products */,
+				DA7F310C871A90473E3C069D /* Pods */,
+				C11232368BFBFA3559CD921E /* Frameworks */,
+				DBAD5B771F10B4CD008A5B50 /* SpotlightShare-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +131,16 @@
 		DBF34DE21F10976A005C23D9 /* SpotlightShare */ = {
 			isa = PBXGroup;
 			children = (
+				DBAD5B6F1F109B4C008A5B50 /* globalFunc.swift */,
+				DBAD5B711F109D45008A5B50 /* globalDef.swift */,
+				DBAD5B751F109EBA008A5B50 /* AppNavigationController.swift */,
 				DBF34DE31F10976B005C23D9 /* AppDelegate.swift */,
 				DBF34DE51F10976B005C23D9 /* ViewController.swift */,
 				DBF34DE71F10976B005C23D9 /* Main.storyboard */,
 				DBF34DEA1F10976B005C23D9 /* Assets.xcassets */,
 				DBF34DEC1F10976B005C23D9 /* LaunchScreen.storyboard */,
 				DBF34DEF1F10976B005C23D9 /* Info.plist */,
+				DBAD5B731F109DD5008A5B50 /* mainViewController.swift */,
 			);
 			path = SpotlightShare;
 			sourceTree = "<group>";
@@ -132,9 +170,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DBF34E081F10976B005C23D9 /* Build configuration list for PBXNativeTarget "SpotlightShare" */;
 			buildPhases = (
+				A3F5BF222C33BAF7CCCFC96D /* [CP] Check Pods Manifest.lock */,
 				DBF34DDC1F10976A005C23D9 /* Sources */,
 				DBF34DDD1F10976A005C23D9 /* Frameworks */,
 				DBF34DDE1F10976A005C23D9 /* Resources */,
+				96906D776CFF5E6635D3E007 /* [CP] Embed Pods Frameworks */,
+				3D3681923E7C7AF83DD85D38 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,7 +235,13 @@
 					DBF34DDF1F10976A005C23D9 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = BH8CXJ4ESF;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					DBF34DF31F10976B005C23D9 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -257,6 +304,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3D3681923E7C7AF83DD85D38 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpotlightShare/Pods-SpotlightShare-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96906D776CFF5E6635D3E007 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpotlightShare/Pods-SpotlightShare-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3F5BF222C33BAF7CCCFC96D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DBF34DDC1F10976A005C23D9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -264,6 +359,10 @@
 			files = (
 				DBF34DE61F10976B005C23D9 /* ViewController.swift in Sources */,
 				DBF34DE41F10976B005C23D9 /* AppDelegate.swift in Sources */,
+				DBAD5B721F109D45008A5B50 /* globalDef.swift in Sources */,
+				DBAD5B761F109EBA008A5B50 /* AppNavigationController.swift in Sources */,
+				DBAD5B701F109B4C008A5B50 /* globalFunc.swift in Sources */,
+				DBAD5B741F109DD5008A5B50 /* mainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,26 +512,33 @@
 		};
 		DBF34E091F10976B005C23D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34E33211F5B8FED64279E607 /* Pods-SpotlightShare.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = BH8CXJ4ESF;
 				INFOPLIST_FILE = SpotlightShare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.nekoyu.SpotlightShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpotlightShare-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		DBF34E0A1F10976B005C23D9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF35928EC34C332FDF06F3C4 /* Pods-SpotlightShare.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = BH8CXJ4ESF;
 				INFOPLIST_FILE = SpotlightShare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.nekoyu.SpotlightShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpotlightShare-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -514,6 +620,7 @@
 				DBF34E0A1F10976B005C23D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DBF34E0B1F10976B005C23D9 /* Build configuration list for PBXNativeTarget "SpotlightShareTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +629,7 @@
 				DBF34E0D1F10976B005C23D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DBF34E0E1F10976B005C23D9 /* Build configuration list for PBXNativeTarget "SpotlightShareUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +638,7 @@
 				DBF34E101F10976B005C23D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
