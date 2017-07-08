@@ -12,6 +12,12 @@
 		DBAD5B721F109D45008A5B50 /* globalDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAD5B711F109D45008A5B50 /* globalDef.swift */; };
 		DBAD5B741F109DD5008A5B50 /* mainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAD5B731F109DD5008A5B50 /* mainViewController.swift */; };
 		DBAD5B761F109EBA008A5B50 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAD5B751F109EBA008A5B50 /* AppNavigationController.swift */; };
+		DBCE24F61F10CD8400B8F1A6 /* arViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCE24F51F10CD8400B8F1A6 /* arViewController.swift */; };
+		DBCE24F81F10DFC100B8F1A6 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = DBCE24F71F10DFC100B8F1A6 /* add.png */; };
+		DBCE24FA1F10E30D00B8F1A6 /* cursor.png in Resources */ = {isa = PBXBuildFile; fileRef = DBCE24F91F10E30D00B8F1A6 /* cursor.png */; };
+		DBCE24FC1F11026500B8F1A6 /* editingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCE24FB1F11026500B8F1A6 /* editingViewController.swift */; };
+		DBCE24FE1F11116700B8F1A6 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = DBCE24FD1F11116700B8F1A6 /* up.png */; };
+		DBCE25001F11142300B8F1A6 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCE24FF1F11142300B8F1A6 /* loginViewController.swift */; };
 		DBF34DE41F10976B005C23D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF34DE31F10976B005C23D9 /* AppDelegate.swift */; };
 		DBF34DE61F10976B005C23D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF34DE51F10976B005C23D9 /* ViewController.swift */; };
 		DBF34DE91F10976B005C23D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF34DE71F10976B005C23D9 /* Main.storyboard */; };
@@ -46,6 +52,12 @@
 		DBAD5B731F109DD5008A5B50 /* mainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainViewController.swift; sourceTree = "<group>"; };
 		DBAD5B751F109EBA008A5B50 /* AppNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		DBAD5B771F10B4CD008A5B50 /* SpotlightShare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpotlightShare-Bridging-Header.h"; sourceTree = "<group>"; };
+		DBCE24F51F10CD8400B8F1A6 /* arViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = arViewController.swift; sourceTree = "<group>"; };
+		DBCE24F71F10DFC100B8F1A6 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		DBCE24F91F10E30D00B8F1A6 /* cursor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cursor.png; sourceTree = "<group>"; };
+		DBCE24FB1F11026500B8F1A6 /* editingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editingViewController.swift; sourceTree = "<group>"; };
+		DBCE24FD1F11116700B8F1A6 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
+		DBCE24FF1F11142300B8F1A6 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		DBF34DE01F10976A005C23D9 /* SpotlightShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotlightShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBF34DE31F10976B005C23D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBF34DE51F10976B005C23D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +143,9 @@
 		DBF34DE21F10976A005C23D9 /* SpotlightShare */ = {
 			isa = PBXGroup;
 			children = (
+				DBCE24F71F10DFC100B8F1A6 /* add.png */,
+				DBCE24FD1F11116700B8F1A6 /* up.png */,
+				DBCE24F91F10E30D00B8F1A6 /* cursor.png */,
 				DBAD5B6F1F109B4C008A5B50 /* globalFunc.swift */,
 				DBAD5B711F109D45008A5B50 /* globalDef.swift */,
 				DBAD5B751F109EBA008A5B50 /* AppNavigationController.swift */,
@@ -141,6 +156,9 @@
 				DBF34DEC1F10976B005C23D9 /* LaunchScreen.storyboard */,
 				DBF34DEF1F10976B005C23D9 /* Info.plist */,
 				DBAD5B731F109DD5008A5B50 /* mainViewController.swift */,
+				DBCE24F51F10CD8400B8F1A6 /* arViewController.swift */,
+				DBCE24FB1F11026500B8F1A6 /* editingViewController.swift */,
+				DBCE24FF1F11142300B8F1A6 /* loginViewController.swift */,
 			);
 			path = SpotlightShare;
 			sourceTree = "<group>";
@@ -282,9 +300,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBCE24FE1F11116700B8F1A6 /* up.png in Resources */,
 				DBF34DEE1F10976B005C23D9 /* LaunchScreen.storyboard in Resources */,
+				DBCE24FA1F10E30D00B8F1A6 /* cursor.png in Resources */,
 				DBF34DEB1F10976B005C23D9 /* Assets.xcassets in Resources */,
 				DBF34DE91F10976B005C23D9 /* Main.storyboard in Resources */,
+				DBCE24F81F10DFC100B8F1A6 /* add.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +378,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBCE24F61F10CD8400B8F1A6 /* arViewController.swift in Sources */,
+				DBCE24FC1F11026500B8F1A6 /* editingViewController.swift in Sources */,
+				DBCE25001F11142300B8F1A6 /* loginViewController.swift in Sources */,
 				DBF34DE61F10976B005C23D9 /* ViewController.swift in Sources */,
 				DBF34DE41F10976B005C23D9 /* AppDelegate.swift in Sources */,
 				DBAD5B721F109D45008A5B50 /* globalDef.swift in Sources */,
@@ -458,7 +482,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -502,7 +526,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

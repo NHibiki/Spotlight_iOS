@@ -15,6 +15,7 @@ class AppNavigationController: NavigationController {
     fileprivate var infoLabel :UILabel!
     fileprivate var myTop :CGFloat = 0
     fileprivate var myTimer :Timer!
+    fileprivate var myHeight :CGFloat = 0
     
     open override func prepare() {
         super.prepare()
@@ -26,6 +27,8 @@ class AppNavigationController: NavigationController {
         v.dividerColor = .clear
         v.backgroundColor = .clear
         v.isTranslucent = true
+        myHeight = v.frame.size.height
+        v.frame.size.height = 0
         
         prepareInfoBar(v.frame.size.height)
     }
@@ -55,6 +58,20 @@ class AppNavigationController: NavigationController {
         let myTouch2 = UITapGestureRecognizer(target: self, action: #selector(onTouch))
         infoLabel.addGestureRecognizer(myTouch2)
         infoBar.addSubview(infoLabel)
+    }
+    
+    public func showBar(_ bool: Bool, _ color: UIColor = .clear) {
+        guard let v = navigationBar as? NavigationBar else {
+            return
+        }
+        v.backgroundColor = color
+        if bool {
+            v.frame.size.height = myHeight
+            v.isTranslucent = false
+        } else {
+            v.frame.size.height = 0
+            v.isTranslucent = true
+        }
     }
     
     public func showInfo(_ text: String, _ color: UIColor, _ duration: Double) {

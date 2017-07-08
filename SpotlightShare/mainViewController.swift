@@ -13,6 +13,7 @@ import Material
 class mainViewController: UIViewController, AMapLocationManagerDelegate, MAMapViewDelegate {
     
     fileprivate var addButton: IconButton!
+    fileprivate var logoText: UILabel!
     fileprivate var barGradientLayer: CAGradientLayer!
     
     fileprivate var locationManager: AMapLocationManager!
@@ -25,8 +26,7 @@ class mainViewController: UIViewController, AMapLocationManagerDelegate, MAMapVi
         locationManager = AMapLocationManager()
         locationManager.delegate = self
         locationManager.distanceFilter = 200
-        locationManager.pausesLocationUpdatesAutomatically = true
-        
+        locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.startUpdatingLocation()
         
         prepareMapView()
@@ -37,8 +37,17 @@ class mainViewController: UIViewController, AMapLocationManagerDelegate, MAMapVi
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        mapView.showsUserLocation = true
         mapView.userTrackingMode = MAUserTrackingMode.follow
+        mapView.showsUserLocation = true
+        mapView.showsCompass = false
+    
+        let r = MAUserLocationRepresentation()
+        r.showsHeadingIndicator = true
+        r.enablePulseAnnimation = true
+        r.locationDotFillColor = myMainColor
+        r.locationDotBgColor = rgba(1, 1, 1, 0.9)
+        r.fillColor = rgba(0, 1, 0.686, 0.2)
+        mapView.update(r)
     }
     
     open override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -52,6 +61,8 @@ class mainViewController: UIViewController, AMapLocationManagerDelegate, MAMapVi
 extension mainViewController {
     fileprivate func prepareMapView() {
         mapView = MAMapView(frame: self.view.bounds)
+        //mapView.allowsBackgroundLocationUpdates = true
+        mapView.setZoomLevel(18.0, animated: true)
         mapView.delegate = self
         self.view.addSubview(mapView!)
     }
@@ -59,38 +70,48 @@ extension mainViewController {
     fileprivate func prepareNavigationItem() {
         let sz = view.frame.size
         
-        addButton = IconButton(image: Icon.cm.add, tintColor: Color.lightBlue.darken4)
-        addButton.addTarget(self, action: #selector(menuButtonClick), for: .touchUpInside)
-        
         barGradientLayer = CAGradientLayer()
-        barGradientLayer.frame = rect(0, sz.height / 5 * 4, sz.width, sz.height / 5)
+        barGradientLayer.frame = rect(0, sz.height / 4 * 3, sz.width, sz.height / 4)
         barGradientLayer.colors = [rgba(1, 1, 1, 0).cgColor, myMainColor.cgColor]
         barGradientLayer.masksToBounds = true
         view.layer.addSublayer(barGradientLayer)
         
+        addButton = IconButton(image: UIImage(named: "up.png"))
+        addButton.addTarget(self, action: #selector(menuButtonClick), for: .touchUpInside)
+        
+        logoText = UILabel()
+        logoText.backgroundColor = rgba(1, 1, 1, 0)
+        logoText.text = "SpotLight"
+        logoText.textColor = rgba(1, 1, 1, 1)
+        logoText.font = UIFont(name: "Arial Rounded MT Bold", size: 28)
+        view.layout(logoText).bottom(20).left(20)
         
         navigationItem.title = ""
         navigationItem.titleLabel.textColor = Color.lightBlue.darken4
         navigationItem.titleLabel.font = UIFont(name: "Arial Rounded MT Bold", size: 20)
         //navigationItem.detail = "Exchange your feelings."
+        //navigationItem.rightViews = [addButton]
         
-        navigationItem.rightViews = [addButton]
+        view.layout(addButton).bottom(15).right(30).width(30).height(40)
     }
 }
 
 extension mainViewController {
     @objc
     fileprivate func menuButtonClick() {
-        
+        self.present(arViewController(), animated: true)
     }
 }
 
 extension mainViewController {
     func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!, reGeocode: AMapLocationReGeocode?) {
-        NSLog("location:{lat:\(location.coordinate.latitude); lon:\(location.coordinate.longitude); accuracy:\(location.horizontalAccuracy);};");
-        
-        if let reGeocode = reGeocode {
-            NSLog("reGeocode:%@", reGeocode)
-        }
+        myPosition.savePos(location)
+        debugPrint(location.coordinate)
     }
+    
+    func mapView(_ mapView: MAMapView!, didTouchPois pois: [Any]!) {
+        debugPrint(pois)
+    }
+    
+    
 }
