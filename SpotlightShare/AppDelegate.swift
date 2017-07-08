@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
         
+        readUserInfoFromFile()
         AMapServices.shared().apiKey = myNavKey
         
         window = UIWindow(frame: Screen.bounds)

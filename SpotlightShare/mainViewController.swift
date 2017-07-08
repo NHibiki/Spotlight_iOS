@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Material
+import CoreMotion
 
 class mainViewController: UIViewController, AMapLocationManagerDelegate, MAMapViewDelegate {
     
@@ -16,8 +17,14 @@ class mainViewController: UIViewController, AMapLocationManagerDelegate, MAMapVi
     fileprivate var logoText: UILabel!
     fileprivate var barGradientLayer: CAGradientLayer!
     
+    fileprivate var motionManager: CMMotionManager!
+    
     fileprivate var locationManager: AMapLocationManager!
     fileprivate var mapView: MAMapView!
+    
+    fileprivate var progressTimer: Timer!
+    
+    fileprivate var putDown: Bool = true
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +35,9 @@ class mainViewController: UIViewController, AMapLocationManagerDelegate, MAMapVi
         locationManager.distanceFilter = 200
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.startUpdatingLocation()
+        
+        motionManager = CMMotionManager()
+        motionManager.startAccelerometerUpdates()
         
         prepareMapView()
         prepareNavigationItem()
@@ -48,6 +58,8 @@ class mainViewController: UIViewController, AMapLocationManagerDelegate, MAMapVi
         r.locationDotBgColor = rgba(1, 1, 1, 0.9)
         r.fillColor = rgba(0, 1, 0.686, 0.2)
         mapView.update(r)
+        
+        prepareDetectTimer()
     }
     
     open override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -59,6 +71,11 @@ class mainViewController: UIViewController, AMapLocationManagerDelegate, MAMapVi
 }
 
 extension mainViewController {
+    fileprivate func prepareDetectTimer() {
+        shutDetectTimer()
+        progressTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateAcc), userInfo: nil, repeats: true)
+    }
+    
     fileprivate func prepareMapView() {
         mapView = MAMapView(frame: self.view.bounds)
         //mapView.allowsBackgroundLocationUpdates = true
@@ -99,19 +116,48 @@ extension mainViewController {
 extension mainViewController {
     @objc
     fileprivate func menuButtonClick() {
-        self.present(arViewController(), animated: true)
+        shutDetectTimer()
+        putDown = false
+        if UserToken != "" {
+            self.present(arViewController(), animated: true)
+        } else {
+            self.present(AppNavigationController(rootViewController: loginViewController()), animated: true)
+        }
     }
 }
 
 extension mainViewController {
     func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!, reGeocode: AMapLocationReGeocode?) {
         myPosition.savePos(location)
-        debugPrint(location.coordinate)
+        //debugPrint(location.coordinate)
     }
     
     func mapView(_ mapView: MAMapView!, didTouchPois pois: [Any]!) {
         debugPrint(pois)
     }
     
+    @objc
+    fileprivate func updateAcc() {
+        if motionManager.isAccelerometerAvailable {
+            if let data = motionManager.accelerometerData {
+                if AllowAutoAr && putDown && UserToken != "" {
+                    if fabs(data.acceleration.z) < 0.3 {
+                        menuButtonClick()
+                    }
+                } else {
+                    if !putDown && fabs(data.acceleration.z) >= 0.3 {
+                        putDown = true
+                    }
+                }
+            }
+        }
+    }
+    
+    fileprivate func shutDetectTimer() {
+        guard let timer = progressTimer else {
+            return
+        }
+        timer.invalidate()
+    }
     
 }
