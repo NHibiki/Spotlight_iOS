@@ -7,6 +7,7 @@
 //
 
 import Material
+import JavaScriptCore
 
 class editingViewController: UIViewController {
     
@@ -14,6 +15,28 @@ class editingViewController: UIViewController {
     fileprivate var closeButton: IconButton!
     
     fileprivate var webView: UIWebView!
+    fileprivate var progressTimer: Timer!
+    
+    fileprivate var jsContext: JSContext!
+    fileprivate let webViewHandler: @convention(block) (String, String) -> Void = { content, file in
+        //NotificationCenter.default.post(name: NSNotification.Name("didReceiveRandomNumbers"), object: luckyNumbers)
+        // Username(nil indicates login), Email, Password
+        
+        var spot = Spot()
+        spot.data = content
+        spot.position = myPosition
+        spot.dataType = 0
+        spot.timeStamp = getTimeStamp()
+        sendPosts(spot, { status in
+            if status {
+                globalOrder = "OFF"
+                getPosts{ spots in
+                    aroundSpots = spots
+                }
+            }
+        })
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +44,7 @@ class editingViewController: UIViewController {
         
         prepareNavigationItem()
         prepareWebView()
+        prepareDetectTimer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,6 +58,24 @@ class editingViewController: UIViewController {
 }
 
 extension editingViewController {
+    @objc
+    fileprivate func updateOrd() {
+        if globalOrder == "OFF" {
+            globalOrder = ""
+            self.dismiss(animated: true)
+        }
+        
+    }
+    fileprivate func shutDetectTimer() {
+        guard let timer = progressTimer else {
+            return
+        }
+        timer.invalidate()
+    }
+    fileprivate func prepareDetectTimer() {
+        shutDetectTimer()
+        progressTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateOrd), userInfo: nil, repeats: true)
+    }
     fileprivate func prepareNavigationItem() {
         
         (navigationController as! AppNavigationController).showBar(true, myMainColor)
@@ -54,9 +96,19 @@ extension editingViewController {
         let sz = view.frame.size
         webView = UIWebView(frame: rect(0, 0, sz.width, sz.height - 68))
         webView.scrollView.bounces = false
-        webView.loadRequest(URLRequest(url: URL(string: "http://nekoyu.cc")!))
-        
         view.addSubview(webView)
+        
+        prepareJS()
+    }
+    
+    fileprivate func prepareJS() {
+        jsContext = webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as! JSContext
+        
+        let webControlJs = unsafeBitCast(self.webViewHandler, to: AnyObject.self)
+        jsContext.setObject(webControlJs, forKeyedSubscript: "submitPost" as(NSCopying & NSObjectProtocol))
+        jsContext.evaluateScript("submitPost")
+        
+        webView.loadRequest(URLRequest(url: URL(string: ApiBase + "editor")!))
     }
 }
 

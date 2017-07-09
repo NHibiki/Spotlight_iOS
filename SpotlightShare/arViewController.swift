@@ -23,8 +23,14 @@ class arViewController: UIViewController, AMapLocationManagerDelegate, AVCapture
     fileprivate var cameraOutput: AVCapturePhotoOutput!
     fileprivate var previewLayer: AVCaptureVideoPreviewLayer!
     
+    fileprivate var leftArrow: UIImageView!
+    fileprivate var rightArrow: UIImageView!
+    
     fileprivate var motionManager: CMMotionManager!
     fileprivate var locationManager: AMapLocationManager!
+    
+    fileprivate var progressTimer: Timer!
+    fileprivate var tagViews: [UILabel] = []
     
     @IBOutlet weak var capturedImage: UIImageView!
     
@@ -53,6 +59,7 @@ class arViewController: UIViewController, AMapLocationManagerDelegate, AVCapture
         }
         
         prepareButtons()
+        prepareDetectTimer()
     }
     
     open override func viewDidAppear(_ animated: Bool) {
@@ -98,6 +105,11 @@ extension arViewController {
         photoBtn.pulseColor = Color.white
         photoBtn.pulseOpacity = 1
         
+        leftArrow = UIImageView(image: UIImage())
+        rightArrow = UIImageView(image: UIImage())
+        view.layout(leftArrow).centerVertically().left(5).height(80).width(30)
+        view.layout(rightArrow).centerVertically().right(5).height(80).width(30)
+        
         cursorImageview = UIImageView(image: UIImage(named: "cursor.png"))
         view.layout(cursorImageview).center().width(20).height(20)
         
@@ -139,6 +151,73 @@ extension arViewController {
         } else {
             print("some error here")
         }
+    }
+    
+    @objc
+    fileprivate func processView() {
+        var i = 0
+        var allDone: Bool = true
+        
+        while i < aroundSpots.count {
+            let theSpot = aroundSpots[i]
+            let thePos = theSpot.transPosition()
+            if thePos.inView() {
+                var j = 0
+                var isUsed = false
+                while j < tagViews.count {
+                    if tagViews[j].tag == theSpot.id {
+                        isUsed = true
+                        UILabel.animate(withDuration: 0.3, animations: {
+                            self.tagViews[j].frame = rect(CGFloat(thePos.x - 140.0), CGFloat(thePos.y - 70.0), 280, 120)
+                            self.tagViews[j].opacity = 1
+                        })
+                    }
+                    j += 1
+                }
+                if !isUsed {
+                    let tagView = UILabel(frame: rect(CGFloat(thePos.x - 140.0), CGFloat(thePos.y - 70.0), 280, 120))
+                    tagView.text = theSpot.data
+                    tagView.tag = theSpot.id
+                    tagView.layer.cornerRadius = 10
+                    tagView.layer.masksToBounds = true
+                    tagView.textAlignment = .center
+                    tagView.backgroundColor = rgba(1, 1, 1, 0.6)
+                    tagViews.append(tagView)
+                    self.view.addSubview(tagView)
+                }
+            } else {
+                var j = 0
+                while j < tagViews.count {
+                    if tagViews[j].tag == theSpot.id {
+                        UILabel.animate(withDuration: 0.3, animations: {
+                            self.tagViews[j].opacity = 0
+                        })
+                    }
+                    j += 1
+                }
+                allDone = false
+                leftArrow.image = UIImage(named: "left.png")
+                rightArrow.image = UIImage(named: "right.png")
+            }
+            i += 1
+        }
+        
+        if allDone {
+            leftArrow.image = UIImage()
+            rightArrow.image = UIImage()
+        }
+    }
+    
+    fileprivate func prepareDetectTimer() {
+        shutDetectTimer()
+        progressTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(processView), userInfo: nil, repeats: true)
+    }
+    
+    fileprivate func shutDetectTimer() {
+        guard let timer = progressTimer else {
+            return
+        }
+        timer.invalidate()
     }
 }
 

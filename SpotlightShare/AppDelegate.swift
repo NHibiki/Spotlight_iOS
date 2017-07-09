@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: Screen.bounds)
         window!.rootViewController = appSuperBarController
         window!.makeKeyAndVisible()
+        globalSize = window!.frame.size
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {

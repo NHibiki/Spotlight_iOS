@@ -24,7 +24,10 @@ class mainViewController: UIViewController, AMapLocationManagerDelegate, MAMapVi
     
     fileprivate var progressTimer: Timer!
     
-    fileprivate var putDown: Bool = true
+    fileprivate var putDown: Bool = false
+    fileprivate var counter: Int = 0
+    
+    fileprivate var myAnnotation: [MAPointAnnotation] = []
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,6 +141,22 @@ extension mainViewController {
     
     @objc
     fileprivate func updateAcc() {
+        if UserToken != "" {
+            if counter < 10 {
+                counter += 1
+            } else {
+                getPosts{ spots in
+                    aroundSpots = spots
+                }
+                var i = 0
+                while i < aroundSpots.count {
+                    addPin(aroundSpots[i])
+                    i += 1
+                }
+                counter = 0
+            }
+        }
+        
         if motionManager.isAccelerometerAvailable {
             if let data = motionManager.accelerometerData {
                 if AllowAutoAr && putDown && UserToken != "" {
@@ -158,6 +177,25 @@ extension mainViewController {
             return
         }
         timer.invalidate()
+    }
+    
+    fileprivate func addPin(_ spot: Spot) {
+        var i = 0
+        while i < myAnnotation.count {
+            if myAnnotation[i].subtitle == String(spot.id) {
+                return
+            }
+            i += 1
+        }
+        
+        let pointAnnotation = MAPointAnnotation()
+        pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: spot.position.la, longitude: spot.position.lo)
+        pointAnnotation.title = spot.data
+        pointAnnotation.subtitle = String(spot.id)
+        mapView.addAnnotation(pointAnnotation)
+        
+        myAnnotation.append(pointAnnotation)
+        
     }
     
 }
